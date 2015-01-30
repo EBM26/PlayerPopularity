@@ -5,12 +5,12 @@ class TwitterJob
 	def perform
 		@counter = 0
 		@client = Twitter::Streaming::Client.new do |config|
-  		config.consumer_key        = ENV["consumer_key"]
+  		config.consumer_key        = ENV["consumer_key"] 
   		config.consumer_secret     = ENV["consumer_secret"]
  		config.access_token        = ENV["access_token"]
   		config.access_token_secret = ENV["access_token_secret"]
 		end
-		@topics = ['kobebryant','kingjames']
+		@topics = ['kobebryant','KingJames']
 		@client.filter(track: @topics.join(",")) do |object| 
     	if object.is_a?(Twitter::Tweet)
     		if object.text.include? 'kobebryant'
@@ -18,7 +18,7 @@ class TwitterJob
     			a.current_mentions = (a.current_mentions + 1)
     			a.save
     			puts "Kobe tweet /n #{object.text}"
-    		elsif object.text.include? 'kingjames'
+    		elsif object.text.include? 'KingJames'
     			a = Player.find_by(name:'Lebron James')
     			a.current_mentions = (a.current_mentions + 1)
     			a.save
@@ -29,5 +29,7 @@ class TwitterJob
 	end
 
 	end
+
+	TwitterJob.new.async.perform
 
 end
