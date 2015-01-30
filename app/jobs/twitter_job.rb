@@ -14,13 +14,13 @@ class TwitterJob
 		@client.filter(track: @topics.join(",")) do |object| 
     	if object.is_a?(Twitter::Tweet)
     		if object.text.include? 'kobebryant'
-    			a = Playerscore.find_by(name:'Kobe Bryant')
-    			a.twitterscore = (a.twitterscore + 1)
+    			a = Player.find_by(name:'Kobe Bryant')
+    			a.current_mentions = (a.current_mentions + 1)
     			a.save
     			puts "Kobe tweet /n #{object.text}"
     		elsif object.text.include? 'kingjames'
-    			a = Playerscore.find_by(name:'Lebron James')
-    			a.twitterscore = (a.twitterscore + 1)
+    			a = Player.find_by(name:'Lebron James')
+    			a.current_mentions = (a.current_mentions + 1)
     			a.save
     			puts "Lebron tweet /n #{object.text}"
     		end
