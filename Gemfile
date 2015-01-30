@@ -34,6 +34,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #adding figaro to hide api keys on github
 gem "figaro"
+gem "pry-rails"
+gem "twitter"
+gem 'sucker_punch', '~> 1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
