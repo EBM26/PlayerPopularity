@@ -30,6 +30,6 @@ class TwitterJob
 
 	end
 
-	TwitterJob.new.async.perform
+
 
 end

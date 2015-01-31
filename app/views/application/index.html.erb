@@ -1,0 +1,5 @@
+<% @player.each do |p| %>
+	<h2> <%= p.name %> </h2>
+	<h3> <%= p.twitter_handle %> </h3>
+	<%= p.currnet_mentions %>
+<% end %>
