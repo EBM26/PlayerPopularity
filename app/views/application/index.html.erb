@@ -1,5 +1,19 @@
-<% @player.each do |p| %>
-	<h2> <%= p.name %> </h2>
-	<h3> <%= p.twitter_handle %> </h3>
-	<%= p.current_mentions %>
-<% end %>
+<table>
+
+  <thead>
+    <tr>
+      <th> Name </th>
+      <th> Twitter</th>
+      <th> Score</th>
+    </tr>
+  </thead>
+  
+  <% @player.each do |p| %>
+    <tr>
+      <td> <%= p.name %> </td>
+      <td> <%= p.twitter_handle %> </td>
+      <td> <%= p.current_mentions %> </td>
+    </tr>
+  <% end %>
+
+</table>
