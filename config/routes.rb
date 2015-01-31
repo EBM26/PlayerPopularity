@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
- get '/runit' => "application#runit"
- resources :application
+ 
+  root 'players#index'
+
+  get '/runit' => "application#runit"
+  resources :application
 end
