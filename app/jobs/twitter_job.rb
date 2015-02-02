@@ -14,30 +14,26 @@ class TwitterJob
 		end
 		# @topics = ['kobebryant','KingJames']
 		@client.filter(track: @topics.join(",")) do |object| 
-    	if object.is_a?(Twitter::Tweet)
+    	   if object.is_a?(Twitter::Tweet)
             
-            @topics.each do |thandle|
-                if object.text.include? thandle 
-                    a = Player.find_by(twitter_handle: thandle)
-                    a.current_mentions = (a.current_mentions + 1)
-                    a.save
-                end
-            end
-    		# if object.text.include? 'kobebryant'
-    		# 	a = Player.find_by(name:'Kobe Bryant')
-    		# 	a.current_mentions = (a.current_mentions + 1)
-    		# 	a.save
-    		# 	puts "Kobe tweet /n #{object.text}"
-    		# elsif object.text.include? 'KingJames'
-    		# 	a = Player.find_by(name:'Lebron James')
-    		# 	a.current_mentions = (a.current_mentions + 1)
-    		# 	a.save
-    		# 	puts "Lebron tweet /n #{object.text}"
-    		# end   		 		 	
-		end
+                @topics.each do |thandle|
+                        if object.text.include? thandle 
+                             @a = Player.find_by(twitter_handle: thandle)
+                          if @a.updated_at.hour == Time.now.hour + 8
+                               @a.current_mentions = (@a.current_mentions + 1)
+                               @a.save
+                          else 
+                               @a.hourly_scores.new(yearday: @a.updated_at.yday, hour:@a.updated_at.hour, score:@a.current_mentions)
+                               @a.current_mentions = 1
+                               @a.save
+                          end
+                        end 	
+                end	 		 	
+		    end
+        end
 	end
 
-	end
+	
 
 
 
