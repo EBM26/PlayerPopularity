@@ -20,19 +20,20 @@ class TwitterJob
             else
                 @hour = Time.now.hour
             end
-                if TotalMention.last.created_at.hour == @hour
-                    TotalMention.last.update(total_mentions: (TotalMention.last.total_mentions + 1))
-                else 
-                    TotalMention.create(yearday: TotalMention.last.created_at.yday,  hour: TotalMention.last.created_at.hour, total_mentions: 1)
-                end
                 @topics.each do |thandle|
                         if object.text.include? thandle 
+                            if TotalMention.last.created_at.hour == @hour
+                                 TotalMention.last.update(total_mentions: (TotalMention.last.total_mentions + 1))
+                            else 
+                                 TotalMention.create(yearday: TotalMention.last.created_at.yday,  hour: TotalMention.last.created_at.hour, total_mentions: 1)
+                            end
                              @a = Player.find_by(twitter_handle: thandle)
-                          if @a.updated_at.hour == Time.now.hour + 8
+                          if @a.updated_at.hour == @hour
                                @a.current_mentions = (@a.current_mentions + 1)
                                @a.save
                           else 
-                               @a.hourly_scores.new(yearday: @a.updated_at.yday, hour:@a.updated_at.hour, score:@a.current_mentions)
+                               @total = TotalMention.find_by(yearday: @a.updated_at.yday, hour:@a.updated_at.hour)
+                               @a.hourly_scores.new(yearday: @a.updated_at.yday, hour:@a.updated_at.hour, score:(@a.current_mentions/@total.total_mentions))
                                @a.current_mentions = 1
                                @a.save
                           end

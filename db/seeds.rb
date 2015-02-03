@@ -31,6 +31,13 @@ Player.create([
 
 
 	])
+ 			if (Time.now.hour + 8) >= 24
+                @hour = (Time.now.hour + 8)%24
+                @day = (Time.now + 1.day).yday
+            else
+                @hour = Time.now.hour
+                @day = Time.now.yday
+            end
 TotalMention.create ([
-	{total_mentions: 0, yearday: Time.now.yday, hour: Time.now.hour}
+	{total_mentions: 0, yearday: @day, hour: @hour}
 	])
