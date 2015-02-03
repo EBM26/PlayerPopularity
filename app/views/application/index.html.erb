@@ -5,6 +5,7 @@
       <th> Name </th>
       <th> Twitter</th>
       <th> Score</th>
+      <th> Last Hourly Score</th>
     </tr>
   </thead>
   
@@ -13,6 +14,9 @@
       <td> <%= p.name %> </td>
       <td> <%= p.twitter_handle %> </td>
       <td> <%= p.current_mentions %> </td>
+      <%p.hourly_scores.all.each do |x|%>
+      <td> <%= x.score %></td>
+      <% end %>
     </tr>
   <% end %>
 
