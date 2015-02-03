@@ -37,7 +37,8 @@ gem "figaro"
 gem "pry-rails"
 gem "twitter"
 gem 'sucker_punch', '~> 1.0'
-
+gem 'c3-rails'
+gem 'd3js-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
