@@ -32,6 +32,7 @@ class TwitterJob
                                @a.current_mentions = (@a.current_mentions + 1)
                                @a.save
                           else 
+                            # This stuff is a little screwed up, ill fix it tomorrow
                                @total = TotalMention.all[-2]
                                @a.hourly_scores.new(yearday: @a.updated_at.yday, hour:@a.updated_at.hour, score:(@a.current_mentions/@total.total_mentions)*1000)
                                @a.current_mentions = 1
