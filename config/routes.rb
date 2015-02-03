@@ -10,8 +10,10 @@ Rails.application.routes.draw do
     get '/players' => 'players#index'
     get '/players/:id' => 'players#show'
 
-    get '/total_mentions' => 'total_mentions#index'
-    get '/total_mentions/:hour' => 'total_mentions#hour'
+    get '/mentions' => 'mentions#index'
+    get '/mentions/today' => 'mentions#today'
+    get '/mentions/today/:hour' => 'mentions#hour'
+
   end
 
 end
