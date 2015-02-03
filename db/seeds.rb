@@ -31,3 +31,6 @@ Player.create([
 
 
 	])
+TotalMention.create ([
+	{total_mentions: 0, yearday: Time.now.yday, hour: Time.now.hour}
+	])

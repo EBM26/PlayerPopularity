@@ -15,7 +15,16 @@ class TwitterJob
 		# @topics = ['kobebryant','KingJames']
 		@client.filter(track: @topics.join(",")) do |object| 
     	   if object.is_a?(Twitter::Tweet)
-            
+            if (Time.now.hour + 8) >= 24
+                @hour = (Time.now.hour + 8)%24
+            else
+                @hour = Time.now.hour
+            end
+                if TotalMention.last.created_at.hour == @hour
+                    TotalMention.last.update(total_mentions: (TotalMention.last.total_mentions + 1))
+                else 
+                    TotalMention.create(yearday: TotalMention.last.created_at.yday,  hour: TotalMention.last.created_at.hour, total_mentions: 1)
+                end
                 @topics.each do |thandle|
                         if object.text.include? thandle 
                              @a = Player.find_by(twitter_handle: thandle)
