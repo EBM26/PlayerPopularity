@@ -12,31 +12,19 @@ class Player < ActiveRecord::Base
     return player_array
   end
 
-  #return array of hourly scores for this player from today
-  def scores_today
+  #return array of all hourly scores for this player
+  def get_scores
 
-    today = Time.now.yday
+    scores_objects = self.hourly_scores.order(:hour)
 
-    self.hourly_scores.where(yearday: today)
+    scores_array = []
 
-  end
+    scores_objects.each do |s|
+      scores_array.push({hour: s.hour, score: s.score})
+    end
 
-  #return array of hourly scores for this player from this week, one per day
-  def scores_this_week
-
-    today = Time.now.yday
-
-    self.hourly_scores.where(yearday: today..(today - 7))
-
-  end
-
-  #return array of hourly scores for this player from this month, one per day
-  def scores_this_month
-
-    today = Time.now.yday
-
-    self.hourly_scores.where(yearday: today..(today - 30))
-
+    scores_array
+    
   end
 
 end
