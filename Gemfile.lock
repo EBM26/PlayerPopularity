@@ -46,7 +46,6 @@ GEM
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
-    c3-rails (0.4.8)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     coderay (1.1.0)
@@ -216,7 +215,6 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  c3-rails
   coffee-rails (~> 4.1.0)
   d3js-rails
   figaro
