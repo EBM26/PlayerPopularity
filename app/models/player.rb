@@ -13,15 +13,30 @@ class Player < ActiveRecord::Base
   end
 
   #return array of hourly scores for this player from today
-  def today
+  def scores_today
+
+    today = Time.now.yday
+
+    self.hourly_scores.where(yearday: today)
+
   end
 
   #return array of hourly scores for this player from this week, one per day
-  def this_week
+  def scores_this_week
+
+    today = Time.now.yday
+
+    self.hourly_scores.where(yearday: today..(today - 7))
+
   end
 
   #return array of hourly scores for this player from this month, one per day
-  def this_month
+  def scores_this_month
+
+    today = Time.now.yday
+
+    self.hourly_scores.where(yearday: today..(today - 30))
+
   end
 
 end
