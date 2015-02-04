@@ -29,21 +29,17 @@ players = Player.create([
 ])
 
 
-#--- Add some random hourly scores for the past month for each player ---
+#--- Add some random hourly scores for today for each player ---
 #note: these scores will be all over the place since it's just using rand(1000)
 today = Time.now.yday
 start_day = today - 30
 
-puts "adding hourly scores for each player"
+puts "adding hourly scores for each player for today"
 Player.all.each do |p|
-	#iterate through each day
-	30.times do |i|
-		day = start_day + i
-		#iterate through each hour (of each day)
-		24.times do |ii|
-			score = rand(1000) + 1
-			p.hourly_scores << HourlyScore.create(yearday: day, hour: ii, score: score)
-		end
+
+	24.times do |ii|
+		score = rand(1000) + 1
+		p.hourly_scores << HourlyScore.create(yearday: today, hour: ii, score: score)
 	end
 
 	puts "done with #{p.name}"
@@ -52,11 +48,9 @@ end
 
 #--- Create some random ass total mentions that in no way correspond to anything ---
 puts "adding total mentions"
-30.times do |i|
-	day = start_day + i
-	24.times do |ii|
-		TotalMention.create(yearday: day, hour: ii, total_mentions: rand(5000))
-	end
+
+24.times do |ii|
+	TotalMention.create(yearday: today, hour: ii, total_mentions: rand(5000))
 end
 
 # if (Time.now.hour + 8) >= 24
