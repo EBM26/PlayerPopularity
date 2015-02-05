@@ -19,6 +19,8 @@ class Api::PlayersController < ApplicationController
 
   end
 
+  # render JSON containing an array with each player's most recent hourly score
+  # eg: {[{name: "Kobe Bryant", score: 740.0, hour: 22}, {...}, {...} ...]}
   def current_scores
     players = Player.all.order(:id)
 
@@ -26,6 +28,20 @@ class Api::PlayersController < ApplicationController
 
     players.each do |p|
       response_json.push(p.get_last_score)
+    end
+
+    render json: response_json
+  end
+
+  # render JSON containing an array of each player, each player containing an array
+  # of each of their last 24 hourly scores
+  def hourly_scores
+    players = Player.all.order(:id)
+
+    response_json = []
+
+    players.each do |p|
+      response_json.push({name: p.name, scores: p.get_hourly_scores})
     end
 
     render json: response_json

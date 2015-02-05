@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace :api do
     get '/players' => 'players#index'
     get '/players/current_scores' => 'players#current_scores'
+    get '/players/hourly_scores' => 'players#hourly_scores'
     get '/players/:id' => 'players#show'
 
     get '/mentions' => 'mentions#index'

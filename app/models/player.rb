@@ -13,14 +13,14 @@ class Player < ActiveRecord::Base
   end
 
   #return array of all hourly scores for this player
-  def get_scores
+  def get_hourly_scores
 
-    scores_objects = self.hourly_scores.order(:hour)
+    hourly_scores = self.hourly_scores.order(:hour)
 
     scores_array = []
 
-    scores_objects.each do |s|
-      scores_array.push({name: self.name, hour: s.hour, score: s.score})
+    hourly_scores.each do |s|
+      scores_array.push(s.score)
     end
 
     scores_array
