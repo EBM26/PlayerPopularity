@@ -26,7 +26,15 @@ class TwitterJob
                             if TotalMention.last.created_at.hour == @hour
                                  TotalMention.last.update(total_mentions: (TotalMention.last.total_mentions + 1))
                             else 
-                                 TotalMention.create(yearday: @day,  hour:@hour, total_mentions: 1)
+                              @i = 0
+                              while @i < @hour do 
+                                if TotalMention.find_by(hour: @i)
+                                  puts 'already created'
+                                else
+                                 TotalMention.create(hour:@i, total_mentions: 1)
+                                end
+                                @i += 1
+                              end
                             end
                             # finding a particular player
                              @a = Player.find_by(twitter_handle: thandle)
@@ -36,10 +44,22 @@ class TwitterJob
                                @a.save
                           else 
                             # This stuff is a little screwed up, ill fix it tomorrow
-                               @total = TotalMention.find_by(yearday:@a.updated_at.yday, hour:@a.updated_at.hour)
-                               @a.hourly_scores.new(yearday: @a.updated_at.yday, hour:@a.updated_at.hour, score:((@a.current_mentions.to_f/@total.total_mentions.to_f)*1000).round(2))
-                               @a.current_mentions = 1
-                               @a.save
+                            @b
+                            while @b < (@hour - 1) do 
+                                if @a.hourly_scores.find_by(hour: @b)
+                                  puts 'already created'
+                                else
+                                  if @a.updated_at.hour == (@hour - 1)
+                                    @total = TotalMention.find_by(hour:@a.updated_at.hour)
+                                    @a.hourly_scores.new(hour:@a.updated_at.hour, score:((@a.current_mentions.to_f/@total.total_mentions.to_f)*1000).round(2))
+                                    @a.current_mentions = 1
+                                    @a.save
+                                  else 
+                                    @.hourly_scores.create(hour:@b, score: 0)
+                                  end
+                                end
+                                @i += 1
+                            end
                           end
                         end 	
                 end	 		 	
