@@ -16,13 +16,10 @@ class TwitterJob
 		@client.filter(track: @topics.join(",")) do |object| 
     	   if object.is_a?(Twitter::Tweet)
           # calculating time for 24 hours
-            if (Time.now.hour + 8) >= 24
-                @hour = (Time.now.hour + 8)%24
-                @day =  @day = (Time.now + 1.day).yday
-            else
+
                 @hour = Time.now.hour
                 @day = Time.now.yday
-            end
+                
                 @topics.each do |thandle|
                         if object.text.include? thandle 
                           # checking if Total Mention is older than an hour
