@@ -64,7 +64,7 @@ class TwitterJob
                                 else
                                   if @a.updated_at.hour == (@hour - 1)
                                     @total = TotalMention.find_by(hour:@a.updated_at.hour)
-                                    @a.hourly_scores.new(hour:@a.updated_at.hour, score:((@a.current_mentions.to_f/@total.total_mentions.to_f)*1000).round(2))
+                                    @a.hourly_scores.create(hour:@a.updated_at.hour, score:((@a.current_mentions.to_f/@total.total_mentions.to_f)*1000).round(2))
                                     @a.current_mentions = 1
                                     @a.save
                                   else 
