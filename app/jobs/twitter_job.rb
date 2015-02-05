@@ -53,7 +53,7 @@ class TwitterJob
                             #method to delete old ass player scores
                               @a.hourly_scores.all.each do |score| 
                                 if (score.created_at.yday != @day) && (score.hour <= @hour)
-                                  hour.delete
+                                  score.delete
                                 end
                               end
                             # This stuff is a little screwed up, ill fix it tomorrow
