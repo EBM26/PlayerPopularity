@@ -3,6 +3,7 @@ class Api::PlayersController < ApplicationController
   def index
     players = Player.all.order(:id)
     render json: players.to_json
+
   end
 
   def show
@@ -16,6 +17,18 @@ class Api::PlayersController < ApplicationController
 
     render json: response_json
 
+  end
+
+  def current_scores
+    players = Player.all.order(:id)
+
+    response_json = []
+
+    players.each do |p|
+      response_json.push(p.get_last_score)
+    end
+
+    render json: response_json
   end
 
 end
