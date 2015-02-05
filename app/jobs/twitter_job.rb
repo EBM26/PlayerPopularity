@@ -57,7 +57,7 @@ class TwitterJob
                                 end
                               end
                             # This stuff is a little screwed up, ill fix it tomorrow
-                            @b
+                            @b = 0
                             while @b < (@hour - 1) do 
                                 if @a.hourly_scores.find_by(hour: @b)
                                   puts 'already created'
@@ -71,7 +71,7 @@ class TwitterJob
                                     @a.hourly_scores.create(hour:@b, score: 0)
                                   end
                                 end
-                                @i += 1
+                                @b += 1
                             end
                           end
                         end 	
