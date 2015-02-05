@@ -20,11 +20,18 @@ class Player < ActiveRecord::Base
     scores_array = []
 
     scores_objects.each do |s|
-      scores_array.push({hour: s.hour, score: s.score})
+      scores_array.push({name: self.name, hour: s.hour, score: s.score})
     end
 
     scores_array
     
+  end
+
+  #return only most recent hourly score
+  def get_last_score
+    s = self.hourly_scores.last
+
+    {name: self.name, score: s.score, hour: s.hour}
   end
 
 end
