@@ -26,6 +26,13 @@ class TwitterJob
                             if TotalMention.last.created_at.hour == @hour
                                  TotalMention.last.update(total_mentions: (TotalMention.last.total_mentions + 1))
                             else 
+                              #method to delete old ass mentions 
+                              TotalMention.all.each do |mention| 
+                                if (mention.created_at.yday != @day) && (mention.hour <= @hour)
+                                  mention.delete
+                                end
+                              end
+                              #method to create missing hours 
                               @i = 0
                               while @i < @hour do 
                                 if TotalMention.find_by(hour: @i)
@@ -43,6 +50,12 @@ class TwitterJob
                                @a.current_mentions = (@a.current_mentions + 1)
                                @a.save
                           else 
+                            #method to delete old ass player scores
+                              @a.hourly_scores.all.each do |score| 
+                                if (score.created_at.yday != @day) && (score.hour <= @hour)
+                                  hour.delete
+                                end
+                              end
                             # This stuff is a little screwed up, ill fix it tomorrow
                             @b
                             while @b < (@hour - 1) do 
@@ -55,7 +68,7 @@ class TwitterJob
                                     @a.current_mentions = 1
                                     @a.save
                                   else 
-                                    @.hourly_scores.create(hour:@b, score: 0)
+                                    @a.hourly_scores.create(hour:@b, score: 0)
                                   end
                                 end
                                 @i += 1
