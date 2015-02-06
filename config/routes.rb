@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/runit' => 'application#runit'
 
   resources :application
+  resources :players
 
   namespace :api do
     get '/players' => 'players#index'

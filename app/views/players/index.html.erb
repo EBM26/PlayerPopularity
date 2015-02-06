@@ -1,0 +1,32 @@
+<section>
+  <aside>
+    <h2> SEARCH</h2>
+  <%= form_for @players, html:{:class => "form"} do |x| %>
+  <%= x.text_field :hi, class: 'inputbox'%>
+  <% end %>
+   <%= button_to 'GO', application_path, :class =>'button'%> 
+   <h1> TOP 5 </h1>
+   <ul>
+      <li>Kobe<br>Bryant</li>
+      <li class='score'> Score: 210.5</li>
+      <li>Lebron<br>James</li>
+      <li class='score'> Score: 210.5</li>
+      <li>Carmelo<br>Anthony</li>
+      <li class='score'> Score: 210.5</li>
+      <li>Blake<br>Griffin</li>
+      <li class='score'> Score: 210.5</li>
+      <li>Derrick<br>Rose</li>
+      <li class='score'> Score: 210.5</li>
+
+   <ul>
+
+  </aside>
+  <section id='newart'>
+    <h4> MOST POPULAR </h4>
+  </section>
+  <section id='newart1'>
+    <h4> RISING POPULARITY </h4>
+  </section>
+
+  </article>
+</section>
