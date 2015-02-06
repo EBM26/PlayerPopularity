@@ -58,15 +58,16 @@ class TwitterJob
                               end
                             # This stuff is a little screwed up, ill fix it tomorrow
                             @b = 0
-                            while @b < (@hour - 1) do 
+                            while @b < @hour  do 
                                 if @a.hourly_scores.find_by(hour: @b)
                                   puts 'already created'
                                 else
-                                  if @a.updated_at.hour == (@hour - 1)
-                                    @total = TotalMention.find_by(hour:@a.updated_at.hour)
-                                    @a.hourly_scores.new(hour:@a.updated_at.hour, score:((@a.current_mentions.to_f/@total.total_mentions.to_f)*1000).round(2))
+                                  if @b == @hour - 1
+                                    @total = TotalMention.find_by(hour:@b)
+                                    @a.hourly_scores.create(hour:@b, score:((@a.current_mentions.to_f/@total.total_mentions.to_f)*1000).round(2))
                                     @a.current_mentions = 1
                                     @a.save
+                                    puts 'has is a score'
                                   else 
                                     @a.hourly_scores.create(hour:@b, score: 0)
                                   end
