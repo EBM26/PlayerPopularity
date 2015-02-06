@@ -11,8 +11,7 @@ class TwitterJob
     TweetStream.configure do |config|
       config.consumer_key       = ENV["consumer_key"]
       config.consumer_secret    = ENV["consumer_secret"]
-      # config.oauth_token        = ENV["access_token"]
-      config.oauth_token        = "lols"
+      config.oauth_token        = ENV["access_token"]
       config.oauth_token_secret = ENV["access_token_secret"]
       config.auth_method        = :oauth
     end
