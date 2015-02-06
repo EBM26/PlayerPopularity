@@ -19,6 +19,17 @@ class TwitterJob
 
     tweet_client = TweetStream::Client.new
 
+    tweet_client.on_reconnect do |timeout, retries|
+      #reconnect
+      puts "Reconnecting tweet_stream.  timeout:#{timeout}, retries:#{retries}"
+
+    end
+
+    tweet_client.on_error do |message|
+      #error
+      puts "Error with tweet_stream: #{message}"
+    end
+
     tweet_client.track(@topics.join(",")) do |object|
 
 
@@ -115,17 +126,6 @@ class TwitterJob
 
 
     end #end of tweet_client.track
-
-    tweet_client.on_reconnect do |timeout, retries|
-      #reconnect
-      puts "Reconnecting tweet_stream.  timeout:#{timeout}, retries:#{retries}"
-
-    end
-
-    tweet_client.on_error do |message|
-      #error
-      puts "Error with tweet_stream: #{message}"
-    end
     
   end #end of #perform
 
