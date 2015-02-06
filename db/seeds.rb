@@ -34,33 +34,33 @@ players = Player.create([
 today = Time.now.yday
 start_day = today - 30
 
-puts "adding hourly scores for each player for today"
-Player.all.each do |p|
+# puts "adding hourly scores for each player for today"
+# Player.all.each do |p|
 
-	24.times do |ii|
-		score = rand(1000) + 1
-		p.hourly_scores << HourlyScore.create(yearday: today, hour: ii, score: score)
-	end
+# 	24.times do |ii|
+# 		score = rand(1000) + 1
+# 		p.hourly_scores << HourlyScore.create(yearday: today, hour: ii, score: score)
+# 	end
 
-	puts "done with #{p.name}"
+# 	puts "done with #{p.name}"
 
-end
+# end
 
 #--- Create some random ass total mentions that in no way correspond to anything ---
 puts "adding total mentions"
 
-24.times do |ii|
-	TotalMention.create(yearday: today, hour: ii, total_mentions: rand(5000))
-end
+# 24.times do |ii|
+# 	TotalMention.create(yearday: today, hour: ii, total_mentions: rand(5000))
+# end
 
 # @hour = Time.now.hour
 # @day = Time.now.yday
 
 
 
-# TotalMention.create ([
-# 	{total_mentions: 0, yearday: @day, hour: @hour}
-# 	])
+TotalMention.create ([
+	{total_mentions: 0, yearday: @day, hour: @hour}
+	])
 
 
 
