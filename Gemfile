@@ -53,6 +53,8 @@ group :development, :test do
   # Added rspec for testing
   gem 'rspec-rails'
 
+  gem 'factory_girl_rails'
+
 end
 
 group :production do 
