@@ -24,7 +24,7 @@ class TwitterJob
           else 
             #method to create missing hours 
             @i = 0
-            while @i < @hour do 
+            while @i <= @hour do 
               if TotalMention.find_by(hour: @i)
                   puts 'already created'
               else
