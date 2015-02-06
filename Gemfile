@@ -39,6 +39,9 @@ gem "twitter"
 gem 'sucker_punch', '~> 1.0'
 gem 'd3js-rails'
 gem 'tweetstream'
+#adding bourbon & neat
+gem 'bourbon'
+gem 'neat'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
