@@ -11,13 +11,16 @@ class TwitterJob
     TweetStream.configure do |config|
       config.consumer_key       = ENV["consumer_key"]
       config.consumer_secret    = ENV["consumer_secret"]
-      config.oauth_token        = ENV["access_token"]
+      # config.oauth_token        = ENV["access_token"]
+      config.oauth_token        = "lols"
       config.oauth_token_secret = ENV["access_token_secret"]
       config.auth_method        = :oauth
     end
 
-		# @topics = ['kobebryant','KingJames']
-		TweetStream::Client.new.track(@topics.join(",")) do |object|
+    tweet_client = TweetStream::Client.new
+
+    tweet_client.track(@topics.join(",")) do |object|
+
 
       if object.is_a?(Twitter::Tweet)
 
@@ -108,11 +111,22 @@ class TwitterJob
 
         end
 
-    	end
+    	end #end of if object.is_a?(Twitter::Tweet)
+
+
+    end #end of tweet_client.track
+
+    tweet_client.on_reconnect do |timeout, retries|
+      #reconnect
+      puts "Reconnecting tweet_stream.  timeout:#{timeout}, retries:#{retries}"
 
     end
+
+    tweet_client.on_error do |message|
+      #error
+      puts "Error with tweet_stream: #{message}"
+    end
     
-  end
+  end #end of #perform
 
-
-end
+end #end of class
