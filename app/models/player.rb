@@ -20,7 +20,7 @@ class Player < ActiveRecord::Base
     scores_array = []
 
     hourly_scores.each do |s|
-      scores_array.push(s.score)
+      scores_array.push({hour: s.hour, score: s.score})
     end
 
     scores_array
