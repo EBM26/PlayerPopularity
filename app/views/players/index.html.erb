@@ -1,14 +1,15 @@
 <section>
   <aside>
     <h2> SEARCH</h2>
-  <%= form_for @players, html:{:class => "form"} do |x| %>
+  <%= form_for @people, html:{:class => "form"} do |x| %>
   <%= x.text_field :hi, class: 'inputbox'%>
   <% end %>
-   <%= button_to 'GO', application_path, :class =>'button'%> 
+   <%= button_to 'GO', players_path, :class =>'button'%> 
    <h1> TOP 5 </h1>
    <ul>
-      <li>Kobe<br>Bryant</li>
-      <li class='score'> Score: 210.5</li>
+
+      <li><%= @players.first.name %></li>
+      <li class='score'> Score <%= @players.first.current_mentions %></li>
       <li>Lebron<br>James</li>
       <li class='score'> Score: 210.5</li>
       <li>Carmelo<br>Anthony</li>
