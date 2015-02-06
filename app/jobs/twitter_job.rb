@@ -7,15 +7,17 @@ class TwitterJob
     @topics = Player.twitter_handles
 
 		@counter = 0
-		@client = Twitter::Streaming::Client.new do |config|
-  		config.consumer_key        = ENV["consumer_key"] 
-  		config.consumer_secret     = ENV["consumer_secret"]
- 		  config.access_token        = ENV["access_token"]
-  		config.access_token_secret = ENV["access_token_secret"]
-		end
+
+    TweetStream.configure do |config|
+      config.consumer_key       = ENV["consumer_key"]
+      config.consumer_secret    = ENV["consumer_secret"]
+      config.oauth_token        = ENV["access_token"]
+      config.oauth_token_secret = ENV["access_token_secret"]
+      config.auth_method        = :oauth
+    end
 
 		# @topics = ['kobebryant','KingJames']
-		@client.filter(track: @topics.join(",")) do |object|
+		TweetStream::Client.new.track(@topics.join(",")) do |object|
 
       if object.is_a?(Twitter::Tweet)
 
