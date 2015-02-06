@@ -5,19 +5,19 @@
   <%= x.text_field :hi, class: 'inputbox'%>
   <% end %>
    <%= button_to 'GO', players_path, :class =>'button'%> 
-   <h1> TOP 5 </h1>
+   <h1> LEADERS </h1>
    <ul>
 
-      <li><%= @player.last.name %></li>
-      <li class='score'> Score <%= @player.last.current_mentions %></li>
-      <li><%= @player.last.name %></li>
-      <li class='score'> Score <%= @player.last.current_mentions %></li>
-      <li><%= @player.last.name %></li>
-      <li class='score'> Score <%= @player.last.current_mentions %></li>
-      <li><%= @player.last.name %></li>
-      <li class='score'> Score <%= @player.last.current_mentions %></li>
-      <li><%= @player.last.name %></li>
-      <li class='score'> Score <%= @player.last.current_mentions %></li>
+      <li><%= @player1.first %><br><%= @player1.last %></li>
+      <li class='score'> Current Mentions: <%= @player.last.current_mentions %></li>
+      <li><%= @player2.first %><br><%= @player2.last %></li>
+      <li class='score'> Current Mentions:<%= @player[-2].current_mentions %></li>
+      <li><%= @player3.first %><br><%= @player3.last %></li>
+      <li class='score'> Current Mentions: <%= @player[-3].current_mentions %></li>
+      <li><%= @player4.first %><br><%= @player4.last %></li>
+      <li class='score'> Current Mentions: <%= @player[-4].current_mentions %></li>
+      <li><%= @player5.first %><br><%= @player5.last %></li>
+      <li class='score'> Current Mentions: <%= @player[-5].current_mentions %></li>
 
    <ul>
 
