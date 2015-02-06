@@ -4,15 +4,15 @@ describe "Players API", :type => :request do
 
   let(:request_headers) { { "Accept" => "application/json", "Content-type" => "application/json" } }
 
-  it "returns a list of speedboats" do
-    FactoryGirl.create_list(:speedboat, 10)
+  it "returns a list of players" do
+    FactoryGirl.create_list(:player, 10)
 
-    get "/api/speedboats"
+    get "/api/players"
 
     expect(response).to have_http_status 200
 
-    speedboats = JSON.parse(response.body)
-    expect(speedboats.count).to eq(10)
+    players = JSON.parse(response.body)
+    expect(players.count).to eq(10)
   end
 
   # it "returns a specific speedboat" do
