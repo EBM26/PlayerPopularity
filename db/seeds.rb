@@ -53,8 +53,8 @@ puts "adding total mentions"
 # 	TotalMention.create(yearday: today, hour: ii, total_mentions: rand(5000))
 # end
 
-# @hour = Time.now.hour
-# @day = Time.now.yday
+@hour = Time.now.hour
+@day = Time.now.yday
 
 
 
