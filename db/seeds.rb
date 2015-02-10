@@ -4,10 +4,10 @@
 
 #--- Create some basic test players ---
 players = Player.create([ 
-	{name:'Kobe Bryant', 							twitter_handle: 'kobebryant', 			current_mentions: 12, bggif: 'http://i.giphy.com/q5hVhkKwKHDuo.gif'},
-	{name:'Lebron James', 						twitter_handle: 'KingJames', 				current_mentions: 0 },
+	{name:'Kobe Bryant', 							twitter_handle: 'kobebryant', 			current_mentions: 12, bggif: 'http://i.giphy.com/q5hVhkKwKHDuo.gif',facts:['5x NBA Champion','2x Finals MVP','17x NBA Allstar'],nickname:'The Black Mamba', bio: "Kobe Bean Bryant (born August 23, 1978) is an American professional basketball player for the Los Angeles Lakers of the National Basketball Association (NBA). He entered the NBA directly from high school, and has played for the Lakers his entire career, winning five NBA championships. Bryant is a 17-time All-Star, 15-time member of the All-NBA Team, and 12-time member of the All-Defensive team. He has led the league in scoring twice, and he ranks third on both the league's all-time regular season scoring and all-time postseason scoring lists."},
+	{name:'Lebron James', 						twitter_handle: 'KingJames', 				current_mentions: 11, bggif: 'http://i.giphy.com/7iMKNvnF4oVqM.gif',facts:['2x NBA Champion', '4x NBA MVP', '2x Olympic Gold Medals'],nickname:'King James',bio: "LeBron Raymone James (born December 30, 1984) is an American professional basketball player with the Cleveland Cavaliers of the National Basketball Association (NBA). Standing at 6 ft 8 in (2.03 m) and weighing 250 lb (113 kg), he has started at the small forward and power forward positions. James has won two NBA championships, four NBA Most Valuable Player Awards, two NBA Finals MVP Awards, two Olympic gold medals, an NBA scoring title, and the NBA Rookie of the Year Award. He has also been selected to 11 NBA All-Star teams, 10 All-NBA teams, and six All-Defensive teams, and is the Cavaliers' all-time leading scorer."},
 	{name:'Carmelo Anthony', 					twitter_handle: 'carmeloanthony', 	current_mentions: 0 },
-	{name:'Damian Lillard', 					twitter_handle: 'Dame_Lillard', 		current_mentions: 0 },
+	{name:'Damian Lillard', 					twitter_handle: 'Dame_Lillard', 		current_mentions: 10 },
 	{name:'Kyrie Irving', 						twitter_handle: 'KyrieIrving', 			current_mentions: 0 },
 	{name:'Micheal Carter Williams', 	twitter_handle: 'MCW1', 						current_mentions: 0 },
 	{name:'Shane Battier', 						twitter_handle: 'ShaneBattier', 		current_mentions: 0 },
@@ -59,7 +59,7 @@ puts "adding total mentions"
 
 
 TotalMention.create ([
-	{total_mentions: 0, yearday: @day, hour: @hour}
+	{total_mentions: 5, yearday: @day, hour: @hour}
 	])
 
 

@@ -1,26 +1,26 @@
 <div class="pure-g">
-  <div class="pure-u-4-12" id='sidebar'>
+  <div class="pure-u-1-5" id='sidebar'>
     <h2> SEARCH</h2>
   <%= form_for @people, html:{:class => "form"} do |x| %>
   <%= x.text_field :hi, class: 'inputbox'%>
   <% end %>
    <%= button_to 'GO', players_path, :class =>'button'%> 
-   <h1> LEADERS </h1>
+   <h1 id='leader'> LEADERS </h1>
    <ul id= "leaders">
       <!-- Displaying the current top 5 players in terms of current mentions -->
       <li><%= link_to "#{@player1.first}<br />#{@player1.last}".html_safe, player_path(@player.last.id), :class => "link" %> </li>
-      <li class='score'> Current Mentions: <%= @player.last.current_mentions %></li>
-      <li><%= link_to "#{@player2.first}<br />#{@player2.last}".html_safe, player_path(@player.last.id), :class => "link" %></li>
-      <li class='score'> Current Mentions: <%= @player[-2].current_mentions %></li>
-      <li><%= link_to "#{@player3.first}<br />#{@player3.last}".html_safe, player_path(@player.last.id), :class => "link" %></li>
-      <li class='score'> Current Mentions: <%= @player[-3].current_mentions %></li>
-      <li><%= link_to "#{@player4.first}<br />#{@player4.last}".html_safe, player_path(@player.last.id), :class => "link" %></li>
-      <li class='score'> Current Mentions: <%= @player[-4].current_mentions %></li>
-      <li><%= link_to "#{@player5.first}<br />#{@player5.last}".html_safe, player_path(@player.last.id), :class => "link" %></li>
-      <li class='score'> Current Mentions: <%= @player[-5].current_mentions %></li>
+      <li class='score'> Current Score: <%= @player.last.current_mentions/(@totalmentions.last.total_mentions+1)%></li>
+      <li><%= link_to "#{@player2.first}<br />#{@player2.last}".html_safe, player_path(@player[-2].id), :class => "link" %></li>
+      <li class='score'> Current Score: <%= @player[-2].current_mentions/(@totalmentions.last.total_mentions+1) %></li>
+      <li><%= link_to "#{@player3.first}<br />#{@player3.last}".html_safe, player_path(@player[-3].id), :class => "link" %></li>
+      <li class='score'> Current Score: <%= @player[-3].current_mentions/(@totalmentions.last.total_mentions+1) %></li>
+      <li><%= link_to "#{@player4.first}<br />#{@player4.last}".html_safe, player_path(@player[-4].id), :class => "link" %></li>
+      <li class='score'> Current Score: <%= @player[-4].current_mentions/(@totalmentions.last.total_mentions+1) %></li>
+      <li><%= link_to "#{@player5.first}<br />#{@player5.last}".html_safe, player_path(@player[-5].id), :class => "link" %></li>
+      <li class='score'> Current Score: <%= @player[-5].current_mentions/(@totalmentions.last.total_mentions+1) %></li>
    <ul>
   </div>
-<div class="pure-u-8-12">
+<div class="pure-u-4-5">
   <section id='newart'>
     <h1 id='charthead'> MOST POPULAR </h1>
   </section>
