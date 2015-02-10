@@ -1,5 +1,15 @@
+  # t.string   "name"
+  # t.string   "twitter_handle"
+  # t.integer  "current_mentions"
+  # t.datetime "created_at",       null: false
+  # t.datetime "updated_at",       null: false
+  # t.boolean  "switch"
+
 class Player < ActiveRecord::Base
-  
+
+  validates :name, presence: true
+  validates :twitter_handle, presence: true
+
   has_many :hourly_scores
     
   #return an array of all player's twitter handles
