@@ -1,0 +1,105 @@
+form {
+  text-align: center;
+}
+.header {
+  width: 100%;
+  height: 70px;
+  background-color: black;
+}
+.background {
+  background-size: cover;
+  width: 100%;
+  height: 600px;
+}
+.layer {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#about {
+  background-color: white;
+  width: 100%;
+  height: 250px;
+  text-align: center;
+  font-family: 'Graduate', cursive;
+  font-size: 25px;
+}
+#button {
+  border-style: none;
+  text-align: center;
+  margin-top: 40px;
+  height: 60px;
+  width: 220px;
+  font-family: 'Graduate', cursive;
+  color: black;
+  background-color: white;
+  font-size: 20px;
+}
+#splash {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 100px;
+  font-family: 'Graduate', cursive;
+  text-align: center;
+  color: white;
+  font-size: 120px;
+}
+#hw {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: 'Graduate', cursive;
+  text-align: center;
+  color: white;
+  font-size: 50px;
+}
+#paragraph {
+  text-align: center;
+  font-family: 'Graduate', cursive;
+  font-size: 18px;
+}
+img {
+  margin-top: 40px;
+}
+#largerimg {
+  margin-top: 20px
+}
+.quote{
+  background-color: black;
+  height: 500px; 
+  width: 100%;
+}
+.says {
+  color: white;
+  font-family: 'Oswald', sans-serif;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  font-size: 30px;
+  text-align: center;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+#bio {
+  text-decoration: none;
+  padding-top: 20px;
+  font-size: 40px;
+}
+.homebut {
+  margin-top: 70px;
+  text-align: center;
+}
+.homebutton {
+  font-family: 'Graduate', cursive;
+  font-size: 20px;
+  padding: 10px 30px 10px 30px;
+  text-align: center;
+  background-color: white;
+  text-decoration: none;
+  color: black;
+}
+#leader {
+  margin-top: 30px;
+}

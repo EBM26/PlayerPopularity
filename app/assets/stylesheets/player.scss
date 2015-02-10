@@ -1,20 +1,12 @@
-section {
-  @include outer-container;
-  aside { 
-    @include span-columns(3);
-    height: 700px;
-    background-color: black;
-  }
-  article { 
-    @include span-columns(9); 
-  }
+body {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
-/*sidebar*/
-/* Rectangle 6: */
-/*background: #FFFFFF;
-border: 1px solid #000000;
-border-radius: 8px;*/
-/* Rectangle 7: */
+#sidebar {
+  background-color: black;
+  height: 800px;
+}
 .button_to {
   margin-top:  20px;
   text-align: center
@@ -29,31 +21,33 @@ border-style: none;
 height: 30px;
 font-family: 'Graduate', cursive;
 color: white;
-font-size: golden-ratio(10px,  1);
+
 }
 ul {
   padding-left: 0;
   list-style: none;
   text-align: center;
   color: white;
+  font-size: 20px;
     li{
+      letter-spacing: 1px;
       font-family: 'Graduate', cursive;
-      font-size: golden-ratio(14px,  1);
       color: white;
-       margin-top: 20px;
+       margin-top: 30px;
+       font-size: 25px;
         text-shadow: -1px 1px grey;
     }
     .score{
+      font-size: 11px;
       margin: 2px 0;
-      font-size: golden-ratio(7px,  1);
       text-shadow: none;
     }
 }
 
 h1 {
+  margin-top: 10px;
+  letter-spacing: 1px;
   font-family: 'Graduate', cursive;
-  font-weight: 4000;
-  font-size: golden-ratio(20px,  1);
   text-align: center;
   color: white;
   text-decoration: underline;
@@ -61,8 +55,8 @@ h1 {
 }
 
 h2 {
+  letter-spacing: 1px;
   font-family: 'Graduate', cursive;
-  font-size: golden-ratio(12px,  1);
   text-align:  center;
   color: white
 }
@@ -78,13 +72,15 @@ h2 {
 /*main div*/
 #newart{
         background-color: #A3ACAC;
-        height: 350px;
+        height: 400px;
+        width: 1200px;
       }
 #newart1{
         background-color: #A3ACAC;
-        height: 350px;
+        height: 400px;
+        width: 1200px;
       }
-h4 {
+#charthead {
   margin: 0;
   padding-top: 5px;
   text-align: center;
@@ -93,5 +89,20 @@ h4 {
   color: #FFFFFF;
   line-height: 58px;
   text-shadow: 0px 2px 4px rgba(0,0,0,0.50);
-  font-size: golden-ratio(22px,  1);
+  text-decoration: none;
+}
+#chart {
+  width: 100%;
+}
+// styling for the ul
+#leaders {
+  padding-left: 0;
+}
+// css for the leaderboard links
+.link {
+  text-decoration: none;
+  color: white;
+}
+.link:hover {
+  color: rgba(255,255,255, 0.6);
 }

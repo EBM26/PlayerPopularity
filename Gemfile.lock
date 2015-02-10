@@ -117,9 +117,6 @@ GEM
     multi_json (1.10.1)
     multipart-post (2.0.0)
     naught (1.0.0)
-    neat (1.7.1)
-      bourbon (>= 4.0)
-      sass (>= 3.3)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     pg (0.18.1)
@@ -249,7 +246,6 @@ DEPENDENCIES
   figaro
   jbuilder (~> 2.0)
   jquery-rails
-  neat
   pg
   pry-rails
   rails (= 4.2.0)
