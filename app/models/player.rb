@@ -1,4 +1,5 @@
 class Player < ActiveRecord::Base
+  
   has_many :hourly_scores
     
   #return an array of all player's twitter handles
