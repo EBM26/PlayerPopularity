@@ -106,3 +106,25 @@ h2 {
 .link:hover {
   color: rgba(255,255,255, 0.6);
 }
+// css for the chart divs
+.charts {
+  margin-right: 15%;
+  margin-left: 15%;
+  height: 300px;
+  background-color: rgba(0,0,0,0.86);
+  box-shadow: -10px 15px 1px 0px rgba(0,0,0,0.50);
+  width: 70%;
+}
+// /* Rectangle 2: */
+// background: rgba(0,0,0,0.86);
+// box-shadow: -10px 15px 1px 0px rgba(0,0,0,0.50);
+// /* Line: */
+// border: 9px solid #000000;
+// /* Path 3: */
+// border: 6px solid #BA3535;
+// /* Path 4: */
+// border: 6px solid #367CAC;
+// /* Path 5: */
+// border: 6px solid #3D6E33;
+// /* Line: */
+// border: 9px solid #000000;
