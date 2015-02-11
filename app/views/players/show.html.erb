@@ -1,0 +1,48 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Muhammad Ali</title>
+
+</head>
+
+<body>
+  <div class='header'>
+  </div>
+  <div class='background' style="background:url(<%= @player.bggif %>) no-repeat center center fixed;background-size: cover"> 
+    <div class ='layer'>
+      <h1 id='splash'> <%= @player.name %></h1>
+      <h2 id='hw'> <%= @player.nickname %> </h2>
+      <form action="#section1">
+        <input type="submit" value="Learn More" id='button'>
+      </form>
+    </div>
+    <div class="pure-g" id='about'>
+      <div class="pure-u-1-3" id='paragraph'>
+        <img src="http://cdn.flaticon.com/png/256/43531.png" height="140" width="140">
+        <p> <%= @player.facts.first %></p>
+        
+      </div>
+      <div class="pure-u-1-3" id='paragraph'>
+        <img src="http://cdn.flaticon.com/png/256/33838.png" height="140" width="140">
+        <p> <%= @player.facts[1] %></p></div>
+      <div class="pure-u-1-3" id='paragraph'><p>
+        <img src="http://cdn.flaticon.com/png/256/26851.png" height="120" width="120" >
+        <p> <%= @player.facts.last %></p></div>
+    </div>
+     <div class="quote">
+     <h1 id ='bio'> Biography </h1> 
+      <p class='says'><%=@player.bio%></p>
+      <div class='homebut'>
+        <a id="section1"></a>
+      <%= link_to 'Home', players_path, :class => 'homebutton' %>
+      </div>
+     </div>
+  </div>
+ 
+
+
+</body>
+</html>

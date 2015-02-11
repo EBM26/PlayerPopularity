@@ -12,6 +12,7 @@ class PlayersController < ApplicationController
     @player5 = @player[-5].name.split(" ")
     # to set up a blank search bar
     @people = 'hi'
+    @totalmentions = TotalMention.all
   end
 
 
