@@ -12,6 +12,11 @@ class Player < ActiveRecord::Base
 
   has_many :hourly_scores
     
+
+  def under24?
+    self.hourly_scores.count < 24
+  end
+  
   #return an array of all player's twitter handles
   def self.twitter_handles
     player_array = []

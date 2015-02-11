@@ -3,14 +3,14 @@ require 'rails_helper'
 RSpec.describe Player, :type => :model do
 
   let(:player) { create(:player) }
-  let(:player_with_scores) { create(:player_with_scores) }
+  let(:player_with_scores) { create(:player_with_hourly_scores) }
 
   it "has a valid factory" do
-    expect(FactoryGirl.create(:player)).to be_valid
+    expect(player).to be_valid
   end
 
   it "has a valid player_with_hourly_scores_factory" do
-    expect(FactoryGirl.create(:player_with_hourly_scores)).to be_valid
+    expect(player_with_scores).to be_valid
   end
 
   it "should create a player with hourly_scores using the player_with_hourly_scores factory" do

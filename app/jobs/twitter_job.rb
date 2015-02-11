@@ -40,32 +40,13 @@ class TwitterJob
 
         # checking if Total Mention is older than an hour
         if TotalMention.last.created_at.hour == @hour
-
           TotalMention.last.update(total_mentions: (TotalMention.last.total_mentions + 1))
-
         else
 
-          #method to create missing hours
-          # maybe make method in total_mention
-          @i = 0
-          while @i <= @hour do 
-            if TotalMention.find_by(hour: @i)
-              puts 'already created'
-            else
-              TotalMention.create(hour:@i, total_mentions: 1)
-            end
-            @i += 1
-          end
+          # Create any missing hours. There should be a total mention for every hour.
+          TotalMention.create_missing_hours
 
-          TotalMention.all.each do |mention| 
-
-            # maybe method in total_mention
-            #method to delete old ass mentions
-            if (mention.created_at.yday != @day) && (mention.hour <= @hour)
-                mention.delete
-            end
-          end
-
+          TotalMention.delete_old_hours
 
           # creating all of the player scores at the same time
           Player.all.each do |p|
