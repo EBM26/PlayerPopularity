@@ -29,6 +29,7 @@ class TwitterJob
       puts "Error with tweet_stream: #{message}"
     end
 
+
     tweet_client.track(@topics.join(",")) do |object|
 
 
@@ -40,42 +41,18 @@ class TwitterJob
 
         # checking if Total Mention is older than an hour
         if TotalMention.last.created_at.hour == @hour
-
           TotalMention.last.update(total_mentions: (TotalMention.last.total_mentions + 1))
-
         else
 
-          #method to create missing hours
-          # maybe make method in total_mention
-          @i = 0
-          while @i <= @hour do 
-            if TotalMention.find_by(hour: @i)
-              puts 'already created'
-            else
-              TotalMention.create(hour:@i, total_mentions: 1)
-            end
-            @i += 1
-          end
+          # Create any missing hours. There should be a total mention for every hour.
+          TotalMention.create_missing_hours
 
-          TotalMention.all.each do |mention| 
+          TotalMention.delete_old_hours
 
-            # maybe method in total_mention
-            #method to delete old ass mentions
-            if (mention.created_at.yday != @day) && (mention.hour <= @hour)
-                mention.delete
-            end
-          end
-
-
-          # creating all of the player scores at the same time
           Player.all.each do |p|
 
-          #method to delete old ass player scores
-            p.hourly_scores.all.each do |score| 
-              if (score.created_at.yday != @day) && (score.hour <= @hour)
-                  score.delete
-              end
-            end
+            # Delete all scores not from the last 24 hours for this player
+            p.delete_old_hourly_scores
 
             #method to create the score 
             @b = 0

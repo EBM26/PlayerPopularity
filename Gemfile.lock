@@ -84,6 +84,11 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.6)
     execjs (2.2.2)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     figaro (1.0.0)
@@ -243,6 +248,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   d3js-rails
+  factory_girl_rails
   figaro
   jbuilder (~> 2.0)
   jquery-rails
