@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe TotalMention, :type => :model do
 
+  let(:hour) { Time.now.hour }
+  let(:day) { Time.now.day }
+
   it "has a valid factory" do
     expect(create(:total_mention)).to be_valid
   end
@@ -32,9 +35,6 @@ RSpec.describe TotalMention, :type => :model do
   end
 
   describe "#delete_old_hours" do
-
-    hour = Time.now.hour
-    day = Time.now.yday
 
     it "does nothing if the total mentions are all from the last 24 hours" do
       mention = create(:total_mention, hour: hour+1, created_at: 1.day.ago)

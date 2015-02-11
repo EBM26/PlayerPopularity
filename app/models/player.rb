@@ -17,7 +17,7 @@ class Player < ActiveRecord::Base
     self.hourly_scores.count < 24
   end
   
-  #return an array of all player's twitter handles
+  #return an array of all players' twitter handles
   def self.twitter_handles
     player_array = []
 
@@ -43,11 +43,26 @@ class Player < ActiveRecord::Base
     
   end
 
-  #return only most recent hourly score
+  # return only most recent hourly score
   def get_last_score
     s = self.hourly_scores.last
 
     {name: self.name, score: s.score, hour: s.hour}
+  end
+
+  # Delete any scores older than 24 hours
+  def delete_old_hourly_scores
+    hour = Time.now.hour
+    day = Time.now.yday
+
+    self.hourly_scores.all.each do |score| 
+      if  ((score.created_at.yday < day) && (score.hour <= hour)) || 
+          (score.created_at.yday > day) || 
+          ((score.created_at.yday == day) && (score.hour > hour))
+        score.delete
+      end
+    end
+
   end
 
 end

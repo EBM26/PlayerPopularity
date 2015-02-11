@@ -29,6 +29,7 @@ class TwitterJob
       puts "Error with tweet_stream: #{message}"
     end
 
+
     tweet_client.track(@topics.join(",")) do |object|
 
 
@@ -48,15 +49,10 @@ class TwitterJob
 
           TotalMention.delete_old_hours
 
-          # creating all of the player scores at the same time
           Player.all.each do |p|
 
-          #method to delete old ass player scores
-            p.hourly_scores.all.each do |score| 
-              if (score.created_at.yday != @day) && (score.hour <= @hour)
-                  score.delete
-              end
-            end
+            # Delete all scores not from the last 24 hours for this player
+            p.delete_old_hourly_scores
 
             #method to create the score 
             @b = 0
