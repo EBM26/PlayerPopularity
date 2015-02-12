@@ -56,9 +56,7 @@ class Player < ActiveRecord::Base
     day = Time.now.yday
 
     self.hourly_scores.all.each do |score| 
-      if  ((score.created_at.yday < day) && (score.hour <= hour)) || 
-          (score.created_at.yday > day) || 
-          ((score.created_at.yday == day) && (score.hour > hour))
+      if  ((score.created_at.yday < day) && (score.hour <= hour))
         score.delete
       end
     end
