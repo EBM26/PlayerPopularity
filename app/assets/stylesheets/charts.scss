@@ -63,7 +63,8 @@ g {
 }
 #chart2 { 
   font-size: 12px ;
-  font-family: 'Graduate', cursive;}
+  font-family: 'Graduate', cursive;
+}
 
 path { 
     stroke: steelblue;
@@ -80,7 +81,7 @@ path {
 }
 
 .legend {
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 10px;
+    font-family: 'Graduate', cursive;
     text-anchor: middle;
 }
