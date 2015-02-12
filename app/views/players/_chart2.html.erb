@@ -1,11 +1,11 @@
-<div id="chart2">
+
  
 <script>
 
 
 
 // Set the dimensions of the canvas / graph
-var margin = {top: 100, right: 60, bottom: 70, left: 120},
+var margin = {top: 100, right: 60, bottom: 70, left: 130},
     width = 870 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
@@ -35,13 +35,13 @@ var priceline = d3.svg.line()
     .y(function(d) { return y(d.score); });
     
 // Adds the svg canvas
-var svg = d3.select(".charts")
+var svg = d3.select("#chart2")
     .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
     .append("g")
         .attr("transform", 
-              "translate(65, 130)");
+              "translate(65, 15)");
 
 
  var playerScores = [];
@@ -122,4 +122,3 @@ d3.json("api/players/top_five", function(error, data) {
 });
 
 </script>
-</div>

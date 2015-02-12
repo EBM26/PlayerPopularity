@@ -35,7 +35,6 @@
   height: 100%; 
   background: #367CAC; 
   text-indent: -9999px; 
-  overflow: hidden; 
 }
 .bars {
   margin-top: 10px;
@@ -56,12 +55,9 @@
 
 // css for second chart 
 
-svg {
-  width: 95%;
-  overflow: scroll;
-}
 g {
   padding-top: 10px;
+  padding-left: 100px;
 }
 #chart2 { 
   font-size: 12px ;
@@ -89,4 +85,8 @@ path {
 }
 .tick {
   font-size: 50%;
+}
+.charts {
+  overflow-x: auto;
+  overflow-y: hidden;
 }
