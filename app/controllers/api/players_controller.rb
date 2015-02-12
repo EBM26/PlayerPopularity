@@ -47,4 +47,17 @@ class Api::PlayersController < ApplicationController
     render json: response_json
   end
 
+  # render JSON containing the hourly scores of the 5 players leading in current mentions
+  def top_five
+    players = Player.all.order(current_mentions: :desc).limit(5)
+
+    response_json = []
+
+    players.each do |p|
+      response_json.push({name: p.name, scores: p.get_hourly_scores, current_mentions: p.current_mentions})
+    end
+
+    render json: response_json
+  end
+
 end

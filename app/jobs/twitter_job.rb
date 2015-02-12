@@ -109,6 +109,7 @@ class TwitterJob
         ActiveRecord::Base.connection.reconnect!
       rescue => e
         puts "________________AN ERROR OCCURED BUT IT WASN'T StatementInvalid__________"
+        puts "error text: #{e.message}"
 
         ActiveRecord::Base.connection.reconnect!
       end
