@@ -1,1 +1,52 @@
-Hola
+<ul class="chartlist">
+  <!-- first player -->
+  <li class="bars">
+    <%= link_to "#{@player.last.name}".html_safe, player_path(@player.last.id), :class => "chartlink" %>
+    <span class="count">Score:  <%= ((@player.last.current_mentions/(@totalmentions.last.total_mentions+1).to_f)*1000).round(2)%></span>
+    <span class="index" style="width: <%= ((@player.last.current_mentions/(@totalmentions.last.total_mentions+1).to_f)*100).round(2)%>%"></span>
+  </li>
+  <!-- second player -->
+  <li class="bars">
+   <%= link_to "#{@player[-2].name}".html_safe, player_path(@player[-2].id), :class => "chartlink" %>
+    <span class="count">Score:  
+      <%= ((@player[-2].current_mentions/(@totalmentions.last.total_mentions+1).to_f)*1000).round(2)%>
+    </span>
+    <span class="index" style="width:  <%= ((@player[-2].current_mentions/(@totalmentions.last.total_mentions+1).to_f)*100).round(2)%>%"></span>
+  </li>
+  <!-- third player -->
+  <li class="bars">
+    <%= link_to "#{@player[-3].name}".html_safe, player_path(@player[-3].id), :class => "chartlink" %>
+    <span class="count">Score:  <%= ((@player[-3].current_mentions/(@totalmentions.last.total_mentions+1).to_f)*1000).round(2)%></span>
+    <span class="index" style="width: <%= ((@player[-3].current_mentions/(@totalmentions.last.total_mentions+1).to_f)*100).round(2)%>%"></span>
+  </li>
+  <!-- fourth player -->
+  <li class="bars">
+    <%= link_to "#{@player[-4].name}".html_safe, player_path(@player[-4].id), :class => "chartlink" %>
+    <span class="count">Score:  <%= ((@player[-4].current_mentions/(@totalmentions.last.total_mentions+1).to_f)*1000).round(2)%></span>
+    <span class="index" style="width: <%= ((@player[-4].current_mentions/(@totalmentions.last.total_mentions+1).to_f)*100).round(2)%>%"></span>
+  </li>
+  <!-- fifth player -->
+  <li class="bars">
+    <%= link_to "#{@player[-5].name}".html_safe, player_path(@player[-5].id), :class => "chartlink" %>
+    <span class="count">Score:  <%= ((@player[-5].current_mentions/(@totalmentions.last.total_mentions+1).to_f)*1000).round(2)%></span>
+    <span class="index" style="width: <%= ((@player[-5].current_mentions/(@totalmentions.last.total_mentions+1).to_f)*100).round(2)%>%"></span>
+  </li>
+  <!-- sixth player  -->
+  <li class="bars">
+    <%= link_to "#{@player[-6].name}".html_safe, player_path(@player[-6].id), :class => "chartlink" %>
+    <span class="count">Score:  <%= ((@player[-6].current_mentions/(@totalmentions.last.total_mentions+1).to_f)*1000).round(2)%></span>
+    <span class="index" style="width: <%= ((@player[-6].current_mentions/(@totalmentions.last.total_mentions+1).to_f)*100).round(2)%>%"></span>
+  </li>
+  <!-- seventh player -->
+  <li class="bars">
+    <%= link_to "#{@player[-7].name}".html_safe, player_path(@player[-7].id), :class => "chartlink" %>
+    <span class="count">Score:  <%= ((@player[-7].current_mentions/(@totalmentions.last.total_mentions+1).to_f)*1000).round(2)%></span>
+    <span class="index" style="width: <%= ((@player[-7].current_mentions/(@totalmentions.last.total_mentions+1).to_f)*100).round(2)%>%"></span>
+  </li>
+  <!-- eigth player -->
+  <li class="bars">
+    <%= link_to "#{@player[-8].name}".html_safe, player_path(@player[-8].id), :class => "chartlink" %>
+    <span class="count">Score:  <%= ((@player[-8].current_mentions/(@totalmentions.last.total_mentions+1).to_f)*1000).round(2)%></span>
+    <span class="index" style="width: <%= ((@player[-8].current_mentions/(@totalmentions.last.total_mentions+1).to_f)*100).round(2)%>%"></span>
+  </li>
+</ul>
