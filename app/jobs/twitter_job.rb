@@ -47,13 +47,16 @@ class TwitterJob
           else
 
             # Create any missing hours. There should be a total mention for every hour.
+            puts "Creating missing hours for TotalMentions"
             TotalMention.create_missing_hours
 
+            puts "Deleting old hours for TotalMentions"
             TotalMention.delete_old_hours
 
             Player.all.each do |p|
 
               # Delete all scores not from the last 24 hours for this player
+              puts "Deleting old hourly scores for #{p.name}"
               p.delete_old_hourly_scores
 
               #method to create the score 
@@ -61,7 +64,7 @@ class TwitterJob
               while @b < @hour do
 
                 if p.hourly_scores.find_by(hour: @b)
-                  puts 'already created'
+                  puts "#{p.name} score for hour #{@b} exists. Doing nothing."
                 else
 
                   #create last hour's score
@@ -70,10 +73,11 @@ class TwitterJob
                     p.hourly_scores.create(hour:@b, score:((p.current_mentions.to_f/@total.total_mentions.to_f)*1000).round(2))
                     p.current_mentions = 0
                     p.save
-                    puts 'has is a score'
+                    puts "Created #{p.name} score for hour #{@b}"
                   else
                     # a score was missing for some reason
                     p.hourly_scores.create(hour:@b, score: 0)
+                    puts "Score for #{p.name} at hour #{@b} was missing. Created it."
                   end
 
                 end
@@ -87,15 +91,19 @@ class TwitterJob
 
           @topics.each do |thandle|
 
-            if object.text.include? thandle 
+            if object.text.include? thandle
               # finding a particular player
               @a = Player.find_by(twitter_handle: thandle)
+              puts "processing tweet for #{@a.name}"
 
               # checking if player's scores are older than an hour
-              if @a.updated_at.hour == @hour
+              # if @a.updated_at.hour == @hour
                 @a.current_mentions = (@a.current_mentions + 1)
                 @a.save
-              end
+                puts "\tupdated current mentions for #{@a.name} to #{@a.current_mentions}"
+              # else
+                # puts "\t#{@a.name} wasn't updated this hour so doing nothing. Do something here?"
+              # end
             end
 
           end
