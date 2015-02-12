@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
  
-  root 'application#index'
+  root 'players#index'
 
   get '/runit' => 'application#runit'
 
