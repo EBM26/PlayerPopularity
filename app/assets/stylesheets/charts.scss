@@ -52,3 +52,35 @@
   text-shadow: none;
   color: white;
 }
+
+// css for second chart 
+
+svg {
+  width: 95%;
+}
+g {
+  padding-top: 10px;
+}
+#chart2 { 
+  font-size: 12px ;
+  font-family: 'Graduate', cursive;}
+
+path { 
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: yellow;
+    stroke-width: 2;
+    shape-rendering: crispEdges;
+}
+
+.legend {
+    font-size: 16px;
+    font-weight: bold;
+    text-anchor: middle;
+}
