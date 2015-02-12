@@ -1,7 +1,7 @@
 class TotalMention < ActiveRecord::Base
 
   # ----------
-  # If there are any missing total mention tallies from the last 24 hours, add them
+  # If there are any missing total mention tallies from today, add them
   # ----------
   def self.create_missing_hours
 
@@ -10,7 +10,7 @@ class TotalMention < ActiveRecord::Base
 
     i = 0
 
-    while i < hour
+    while i <= hour
       mentions = TotalMention.find_by(hour: i)
 
       if mentions == nil
