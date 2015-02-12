@@ -1,3 +1,4 @@
+// Css for bar chart
 .chartlist li { 
   position: relative;
   display: block; 
@@ -57,6 +58,7 @@
 
 svg {
   width: 95%;
+  overflow: scroll;
 }
 g {
   padding-top: 10px;
