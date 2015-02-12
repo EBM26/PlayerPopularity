@@ -10,12 +10,14 @@ class TotalMention < ActiveRecord::Base
 
     i = 0
 
-    24.times do |i|
+    while i < hour
       mentions = TotalMention.find_by(hour: i)
 
       if mentions == nil
         TotalMention.create(hour: i, total_mentions: 1)
       end
+
+      i += 1
 
     end
   end
