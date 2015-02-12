@@ -47,13 +47,16 @@ class TwitterJob
           else
 
             # Create any missing hours. There should be a total mention for every hour.
+            puts "Creating missing hours for TotalMentions"
             TotalMention.create_missing_hours
 
+            puts "Deleting old hours for TotalMentions"
             TotalMention.delete_old_hours
 
             Player.all.each do |p|
 
               # Delete all scores not from the last 24 hours for this player
+              puts "Deleting old hourly scores for #{p.name}"
               p.delete_old_hourly_scores
 
               #method to create the score 
@@ -94,13 +97,13 @@ class TwitterJob
               puts "processing tweet for #{@a.name}"
 
               # checking if player's scores are older than an hour
-              if @a.updated_at.hour == @hour
+              # if @a.updated_at.hour == @hour
                 @a.current_mentions = (@a.current_mentions + 1)
                 @a.save
                 puts "\tupdated current mentions for #{@a.name} to #{@a.current_mentions}"
-              else
-                puts "\t#{@a.name} wasn't updated this hour so doing nothing. This is bad, I think."
-              end
+              # else
+                # puts "\t#{@a.name} wasn't updated this hour so doing nothing. Do something here?"
+              # end
             end
 
           end
