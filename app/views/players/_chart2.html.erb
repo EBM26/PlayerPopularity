@@ -30,7 +30,8 @@ var yAxis = d3.svg.axis().scale(y)
     .orient("left").ticks(10);
 
 // Define the line
-var priceline = d3.svg.line()   
+var priceline = d3.svg.line()
+    .interpolate("basis")
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.score); });
     
