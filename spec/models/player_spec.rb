@@ -81,14 +81,6 @@ RSpec.describe Player, :type => :model do
 
     end
 
-    it "deletes scores from the future" do
-      # BAD scores from the future that should be deleted
-      player.hourly_scores.push(create(:hourly_score, hour: hour+1, created_at: 1.hour.from_now))
-
-      player.delete_old_hourly_scores
-      expect(player.hourly_scores.count).to eq(0)
-    end
-
 
   end
 
