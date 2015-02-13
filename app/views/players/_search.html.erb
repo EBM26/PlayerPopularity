@@ -1,3 +1,52 @@
 <%= form_for @people, html:{:class => "form"} do |f| %>
   <%= f.text_field :hi, class: 'inputbox'%>
 <% end %>
+
+<script>
+  searchable = [];  // this will hold our list of players
+
+  // Get list of searchable players from the API
+  $.getJSON("api/players/list", function(data) {
+    
+    $.each( data, function( key, val ) {
+      var player = {};
+      player[val.id] = val.name;
+      searchable.push(player);
+    });
+
+    console.log(searchable);
+  });
+
+</script>
+
+
+<!-- <script>
+  // Twitter typeahead exmaple.
+
+  // instantiate the bloodhound suggestion engine
+  var numbers = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('num'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    local: [
+      { num: 'one' },
+      { num: 'two' },
+      { num: 'three' },
+      { num: 'four' },
+      { num: 'five' },
+      { num: 'six' },
+      { num: 'seven' },
+      { num: 'eight' },
+      { num: 'nine' },
+      { num: 'ten' }
+    ]
+  });
+
+  // initialize the bloodhound suggestion engine
+  numbers.initialize();
+
+  // instantiate the typeahead UI
+  $('.example-numbers .typeahead').typeahead(null, {
+    displayKey: 'num',
+    source: numbers.ttAdapter()
+  });
+</script> -->
