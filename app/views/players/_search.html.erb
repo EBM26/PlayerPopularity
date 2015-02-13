@@ -1,0 +1,52 @@
+<!-- <div id="bloodhound">
+  <input class="typeahead" type="text" placeholder="Players">
+</div> -->
+
+
+<%= form_for @people, html:{class: "form", id: "bloodhound"} do |f| %>
+  <%= f.text_field :hi, class: 'inputbox typeahead'%>
+<% end %>
+
+<%= button_to 'GO', players_path, :class =>'button'%> 
+
+
+<script>
+  var searchable = [];  // this will hold our list of players
+
+  // Get list of searchable players from the API
+  $.getJSON("api/players/list", function(data) {
+
+    // constructs the suggestion engine
+    var players = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      local: data
+    });
+     
+    // kicks off the loading/processing of `local` and `prefetch`
+    players.initialize();
+     
+    $('#bloodhound .typeahead').typeahead({
+      hint: true,
+      highlight: true,
+      minLength: 1
+    },
+    {
+      name: 'players',
+      displayKey: 'value',
+      // `ttAdapter` wraps the suggestion engine in an adapter that
+      // is compatible with the typeahead jQuery plugin
+      source: players.ttAdapter()
+    });
+
+  });
+
+
+
+
+
+
+
+</script>
+
+
