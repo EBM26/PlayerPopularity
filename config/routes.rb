@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'players#index'
 
   get '/runit' => 'application#runit'
+  get '/all' => 'players#all'
 
   resources :application
   resources :players

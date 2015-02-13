@@ -20,5 +20,9 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
   end
 
+  def all
+    @players = Player.all 
+  end
+
 
 end
