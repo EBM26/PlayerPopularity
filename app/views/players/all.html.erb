@@ -1,1 +1,7 @@
-testing
+<div id='allbg'>
+  <% @players.each do |p| %>
+  <div class='player-each'>
+    <%= link_to "#{p.name}", player_path(p.id) %>
+  </div>
+  <% end %>
+</div>
