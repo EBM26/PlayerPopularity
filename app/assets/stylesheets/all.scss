@@ -24,7 +24,7 @@
     background-position:left bottom;
 }
 .linktext {
-  margin-top: 15px;
+  margin-top: 10px;
   font-size: 30px;
   text-decoration: none;
   color: white;
@@ -35,4 +35,26 @@
 .all-head {
   height: 100px;
   width: 100%;
+  margin-bottom: 60px;
+  text-align: center;
+  font-family: 'Graduate', cursive;
+  h1 {
+    color: black;
+    font-size: 70px;
+    text-decoration: none;
+    text-shadow: 0px 2px 4px rgba(0,0,0,0.50);
+    margin-bottom: 30px;
+    margin-top: 20px;
+  }
+  .go-home {
+    text-decoration: none;
+    color: white;
+    background-color: #FF0000;
+    padding: 10px 20px;
+  }
+}
+.playscore {
+  position: relative;
+  top: -55px;
+  color: white
 }

@@ -1,11 +1,14 @@
 <div class='all-head'>
-
+  <h1> All Tracked Players </h1>
+  <%= link_to 'Go Back Home', root_path, :class =>'go-home'%> 
 </div>
 
 <div id='allbg'>
   <% @players.each do |p| %>
-  <div class='player-each' style='background:url(<%= p.bggif %>'>
+  <div class='player-each'>
     <%= link_to "#{p.name}", player_path(p.id), :class => 'linktext' %>
+      <p class="playscore">Current Score: <%= ((p.current_mentions/(@totalmentions.last.total_mentions+1).to_f)*1000).round(2)%>
+      </p>
   </div>
   <% end %>
 </div>

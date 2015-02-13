@@ -21,7 +21,8 @@ class PlayersController < ApplicationController
   end
 
   def all
-    @players = Player.all 
+    @players = Player.all .order(current_mentions: :desc)
+    @totalmentions =TotalMention.all
   end
 
 
