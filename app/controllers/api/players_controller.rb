@@ -66,9 +66,10 @@ class Api::PlayersController < ApplicationController
     response_json = []
 
     players.each do |p|
-      player = {}
-      player[p.id] = p.name
-      response_json.push(player)
+      # player = {}
+      # player[p.id] = p.name
+      # response_json.push(player)
+      response_json.push({value: p.name})
     end
 
     # render json: players.to_json(only: [:id, :name])
