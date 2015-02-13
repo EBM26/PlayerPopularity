@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     get '/players/current_scores' => 'players#current_scores'
     get '/players/hourly_scores' => 'players#hourly_scores'
     get '/players/top_five' => 'players#top_five'
+    get '/players/list' => 'players#list_with_ids'
+    # declare show last since otherwise it will override any other calls that start w "/players"
     get '/players/:id' => 'players#show'
 
     get '/mentions' => 'mentions#index'
