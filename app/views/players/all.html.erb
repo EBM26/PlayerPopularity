@@ -1,7 +1,7 @@
 <div id='allbg'>
   <% @players.each do |p| %>
-  <div class='player-each'>
-    <%= link_to "#{p.name}", player_path(p.id) %>
+  <div class='player-each' style='background:url(<%= p.bggif %>'>
+    <%= link_to "#{p.name}", player_path(p.id), :class => 'linktext' %>
   </div>
   <% end %>
 </div>
