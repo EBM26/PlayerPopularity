@@ -63,7 +63,16 @@ class Api::PlayersController < ApplicationController
   # render JSON containing list of players in DB and their ID
   def list_with_ids
     players = Player.all.order(:id)
-    render json: players.to_json(only: [:id, :name])
+    response_json = []
+
+    players.each do |p|
+      player = {}
+      player[p.id] = p.name
+      response_json.push(player)
+    end
+
+    # render json: players.to_json(only: [:id, :name])
+    render json: response_json.to_json
   end
 
 end
