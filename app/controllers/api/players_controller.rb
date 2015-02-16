@@ -69,7 +69,7 @@ class Api::PlayersController < ApplicationController
       # player = {}
       # player[p.id] = p.name
       # response_json.push(player)
-      response_json.push({value: p.name})
+      response_json.push({value: p.name, id: p.id})
     end
 
     # render json: players.to_json(only: [:id, :name])

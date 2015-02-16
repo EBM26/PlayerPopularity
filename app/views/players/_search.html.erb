@@ -1,13 +1,9 @@
-<!-- <div id="bloodhound">
-  <input class="typeahead" type="text" placeholder="Players">
-</div> -->
 
 
-<%= form_for @people, html:{class: "form", id: "bloodhound"} do |f| %>
-  <%= f.text_field :hi, class: 'inputbox typeahead'%>
+<%= form_tag "/players/search", method: "get", class: "form", id: "bloodhound" do %>
+  <%= text_field_tag :query, params[:query], class: 'inputbox typeahead'%>
+  <%= submit_tag "Submit", class: 'button' %>
 <% end %>
-
-<%= button_to 'GO', players_path, :class =>'button'%> 
 
 
 <script>
@@ -15,6 +11,9 @@
 
   // Get list of searchable players from the API
   $.getJSON("api/players/list", function(data) {
+    console.log("getting players list");
+
+    console.log(data);
 
     // constructs the suggestion engine
     var players = new Bloodhound({
@@ -40,12 +39,6 @@
     });
 
   });
-
-
-
-
-
-
 
 </script>
 

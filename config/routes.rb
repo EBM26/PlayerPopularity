@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/runit' => 'application#runit'
   get '/all' => 'players#all'
 
+  get '/players/search' => 'players#search'
+
   resources :application
   resources :players
 
