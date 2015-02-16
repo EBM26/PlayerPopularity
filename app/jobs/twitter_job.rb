@@ -68,13 +68,22 @@ class TwitterJob
                 else
 
                   #create last hour's score
-                  if @b == @hour - 1
+                  if @b == @hour - 1 
                     @total = TotalMention.find_by(hour:@b)
                     p.hourly_scores.create(hour:@b, score:((p.current_mentions.to_f/@total.total_mentions.to_f)*1000).round(2))
                     p.current_mentions = 0
                     p.save
                     puts "Created #{p.name} score for hour #{@b}"
+                  elsif @hour == 0
+                    @total = TotalMention.find_by(hour:23)
+                    p.hourly_scores.create(hour:23, score:((p.current_mentions.to_f/@total.total_mentions.to_f)*1000).round(2))
+                    p.current_mentions = 0
+                    p.save
+                    puts "Created #{p.name} score for hour #{@b}"
                   else
+                    if hourly_scores.find_by(hour:23) == false
+                      p.hourly_scores.create(hour:23, score: 0)
+                    else
                     # a score was missing for some reason
                     p.hourly_scores.create(hour:@b, score: 0)
                     puts "Score for #{p.name} at hour #{@b} was missing. Created it."
