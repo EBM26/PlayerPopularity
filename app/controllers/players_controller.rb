@@ -25,5 +25,16 @@ class PlayersController < ApplicationController
     @totalmentions =TotalMention.all
   end
 
+  def search
+    player = Player.find_by(name: params[:query])
+
+    if player
+      redirect_to player_path(player.id)
+    else
+      redirect_to players_path
+    end
+
+  end
+
 
 end

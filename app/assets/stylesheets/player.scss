@@ -14,7 +14,7 @@ body {
 background-color: #FF0000;
 box-shadow: -4px 5px 0px 0px rgba(255,0,0,0.50);
 width: 100px;
-margin: 0 auto;
+margin: 10px auto 0 auto;
 border-radius: 2px;
 border-style: none;
 height: 30px;
@@ -69,6 +69,10 @@ h2 {
   font-family: 'Graduate', cursive;
 }
 
+.tt-hint {
+  color: #C1C1C1;
+}
+
 .tt-dropdown-menu {
   font-family: 'Graduate', cursive;
   background-color: white;
@@ -89,6 +93,7 @@ h2 {
   color: white;
   background-color: #28679E;
 }
+
 /*main div*/
 #newart{
         background-color: #A3ACAC;
