@@ -31,7 +31,7 @@ class Player < ActiveRecord::Base
   #return array of all hourly scores for this player
   def get_hourly_scores
 
-    hourly_scores = self.hourly_scores.order(:created_at)
+    hourly_scores = self.hourly_scores.order(:hour)
 
     scores_array = []
 
