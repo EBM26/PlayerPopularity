@@ -31,12 +31,16 @@ class Player < ActiveRecord::Base
   #return array of all hourly scores for this player
   def get_hourly_scores
 
-    hourly_scores = self.hourly_scores.order(:hour)
+    hourly_scores = self.hourly_scores.order(:created_at)
 
     scores_array = []
 
+    i = 0
+
     hourly_scores.each do |s|
-      scores_array.push({hour: s.hour, score: s.score})
+      # scores_array.push({hour: s.hour, score: s.score})
+      scores_array.push({hour: i, score: s.score})
+      i ++
     end
 
     scores_array
