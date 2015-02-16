@@ -59,7 +59,15 @@ class TwitterJob
               puts "Deleting old hourly scores for #{p.name}"
               p.delete_old_hourly_scores
 
-              #method to create the score 
+              #method to create the score for hour 23
+              if @hour == 0
+                    @total = TotalMention.find_by(hour:23)
+                    p.hourly_scores.create(hour:23, score:((p.current_mentions.to_f/@total.total_mentions.to_f)*1000).round(2))
+                    p.current_mentions = 0
+                    p.save
+                    puts "Created #{p.name} score for hour 23"
+              end
+              #method to create the score for hours 0-22
               @b = 0
               while @b < @hour do
 
@@ -74,16 +82,7 @@ class TwitterJob
                     p.current_mentions = 0
                     p.save
                     puts "Created #{p.name} score for hour #{@b}"
-                  elsif @hour == 0
-                    @total = TotalMention.find_by(hour:23)
-                    p.hourly_scores.create(hour:23, score:((p.current_mentions.to_f/@total.total_mentions.to_f)*1000).round(2))
-                    p.current_mentions = 0
-                    p.save
-                    puts "Created #{p.name} score for hour #{@b}"
                   else
-                    if hourly_scores.find_by(hour:23) == false
-                      p.hourly_scores.create(hour:23, score: 0)
-                    else
                     # a score was missing for some reason
                     p.hourly_scores.create(hour:@b, score: 0)
                     puts "Score for #{p.name} at hour #{@b} was missing. Created it."
