@@ -1,6 +1,3 @@
-<img src="app/assets/images/playerpopularity.jpg"></a>
-
-
 ##PlayerPopularity
 
 -- [See it in production!](http://playerproductivity.herokuapp.com/players)
