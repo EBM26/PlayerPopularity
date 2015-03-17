@@ -1,4 +1,4 @@
-<img src="images/playerpopularity.jpg"></a>
+<img src="app/assets/images/playerpopularity.jpg"></a>
 
 
 ##PlayerPopularity
